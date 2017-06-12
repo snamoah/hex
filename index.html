@@ -1,0 +1,36 @@
+<html>
+  <title>Hex</title>
+
+  <body>
+
+    <form action="">
+      <input type='text' placeholder="Enter hex code here. E.g. #ffffff" />
+    </form>
+
+    <script>
+      const input = document.querySelector('input');
+      const body = document.querySelector('body');
+      const form = document.querySelector('form');
+
+      const changeBackground = (e) => {
+        console.info(e);
+        e.preventDefault();
+
+        const value = input.value;
+        const regex = /^#([a-z0-9]{3}|[a-z0-9]{6})$/i;
+
+        if (regex.test(value)) {
+          body.style.backgroundColor = value;
+        } else {
+          if (e.type === 'submit') {
+            alert('Invalid Hex Code. Please enter a valid one');
+          }
+        }
+
+      };
+
+      form.addEventListener('submit', changeBackground);
+      input.addEventListener('keyup', changeBackground);
+    </script>
+  </body>
+</html>
